@@ -245,8 +245,12 @@ If that is not set, then the system default will be used.
 	open var code = BasicStyles()
 	
 	open var strikethrough = BasicStyles()
-	
+    
+    /// The bullet character for unordered list items
 	public var bullet : String = "・"
+    
+    /// The characters between the bullet/number and the text in a list
+    public var listSpacingcharacter : String = "\t"
 	
 	public var underlineLinks : Bool = false
 	
@@ -528,7 +532,7 @@ extension SwiftyMarkdown {
 			paragraphStyle.headIndent = addition
 
 			attributes[.paragraphStyle] = paragraphStyle
-			finalTokens.insert(Token(type: .string, inputString: "\(indent)\(listItem)\t"), at: 0)
+			finalTokens.insert(Token(type: .string, inputString: "\(indent)\(listItem)\(listSpacingcharacter)"), at: 0)
 			
 		case .yaml:
 			lineProperties = body
