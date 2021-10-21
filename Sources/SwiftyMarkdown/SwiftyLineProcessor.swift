@@ -162,7 +162,7 @@ public class SwiftyLineProcessor {
 		for element in previousLines {
 			let output = (element.shouldTrim) ? text.trimmingCharacters(in: .whitespaces) : text
 			let charSet = CharacterSet(charactersIn: element.token )
-			if output.unicodeScalars.allSatisfy({ charSet.contains($0) }) {
+            if !output.isEmpty, output.unicodeScalars.allSatisfy({ charSet.contains($0) }) {
 				return SwiftyLine(line: "", lineStyle: element.type)
 			}
 		}
